@@ -1,0 +1,27 @@
+
+const express = require('express');
+const connectDB = require('./config/db');
+var cors = require('cors');
+
+
+const signup = require("./routes/api/signup");
+const paid = require("./routes/api/paidInstallment");
+
+const app = express();
+connectDB();
+// cors
+app.use(cors({ origin: true, credentials: true }));
+
+// Init Middleware
+app.use(express.json({ extended: false }));
+
+app.get('/', (req, res) => res.send('Hello world!'));
+
+app.use("/signup",signup);
+app.use("/paid",paid);
+
+
+
+const port = process.env.PORT || 8000;
+
+app.listen(port, () => console.log(`Server running on port ${port}`));

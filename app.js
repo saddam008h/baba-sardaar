@@ -8,6 +8,7 @@ const signup = require("./routes/api/signup");
 const paid = require("./routes/api/paidInstallment");
 
 const app = express();
+const port = process.env.PORT || 8000;
 connectDB();
 // cors
 app.use(cors({ origin: true, credentials: true }));
@@ -19,9 +20,5 @@ app.get('/', (req, res) => res.send('Hello world!'));
 
 app.use("/signup",signup);
 app.use("/paid",paid);
-
-
-
-const port = process.env.PORT || 8000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

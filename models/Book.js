@@ -31,6 +31,9 @@ const SignUpSchema = new mongoose.Schema({
   total_installments: {
     type: Number,
     required: true
+  },
+  remaining:{
+    type: Number,
   }
 });
 
